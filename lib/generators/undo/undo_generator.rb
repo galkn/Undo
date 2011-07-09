@@ -1,5 +1,5 @@
 class UndoGenerator < Rails::Generators::Base
-  source_root File.expand_path('../templates', __FILE__)
+  #source_root File.expand_path('../templates', __FILE__)
   
   def undo
     executed = false
@@ -47,10 +47,10 @@ class UndoGenerator < Rails::Generators::Base
     end
     
     if executed
-      File.open('log/undone.log', 'a+') do |f| 
+      File.open(File.join(RAILS_ROOT, 'log/undone.log'), 'a+') do |f| 
         f.write(executed_command)
       end
-      File.open('log/generate.log', 'a+') do |f| 
+      File.open(File.join(RAILS_ROOT, 'log/generate.log'), 'a+') do |f| 
         f.write("0\n")
       end
       exec "rails destroy #{executed_generator} #{executed_action}"

@@ -16,4 +16,3 @@ DEPENDENCIES
   bundler (~> 1.0.0)
   jeweler (~> 1.6.4)
   rcov
-

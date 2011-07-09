@@ -1,5 +1,5 @@
 class RedoGenerator < Rails::Generators::Base
-  source_root File.expand_path('../templates', __FILE__)
+  #source_root File.expand_path('../templates', __FILE__)
   
   def redo
     executed = false
@@ -7,7 +7,9 @@ class RedoGenerator < Rails::Generators::Base
     executed_generator = ""
     executed_action = ""
     
-    File.open('log/undone.log', 'r+') do |f| 
+    File.new(File.join(RAILS_ROOT, 'log/undone.log'), "w") 
+    
+    File.open(File.join(RAILS_ROOT, 'log/undone.log'), 'r+') do |f| 
       zeroes = 0
       f.readlines.reverse.each do |r|
         
@@ -45,10 +47,10 @@ class RedoGenerator < Rails::Generators::Base
     end
     
     if executed
-      File.open('log/generate.log', 'a+') do |f| 
+      File.open(File.join(RAILS_ROOT, 'log/generate.log'), 'a+') do |f| 
         f.write(executed_command)
       end
-      File.open('log/undone.log', 'a+') do |f| 
+      File.open(File.join(RAILS_ROOT, 'log/undone.log'), 'a+') do |f| 
         f.write("0\n")
       end
       exec "rails #{executed_command}"
