@@ -1,14 +1,11 @@
 class RedoGenerator < Rails::Generators::Base
-  #source_root File.expand_path('../templates', __FILE__)
   
   def redo
     executed = false
     executed_command = ""
     executed_generator = ""
     executed_action = ""
-    
-    File.new(File.join(RAILS_ROOT, 'log/undone.log'), "w") 
-    
+        
     File.open(File.join(RAILS_ROOT, 'log/undone.log'), 'r+') do |f| 
       zeroes = 0
       f.readlines.reverse.each do |r|
@@ -36,7 +33,7 @@ class RedoGenerator < Rails::Generators::Base
 
           if ["y", "yes", "true"].include?(response.downcase)
             executed = true
-            executed_command = r
+            executed_command = "#{r}"
             executed_generator = generator
             executed_action = action
           end
