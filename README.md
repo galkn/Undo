@@ -17,8 +17,9 @@ Undo gives you the ability to:
 * Redo stuff you've undone (generate)
 
 ## Installation
+In your Gemfile:
 
-	% rails plugin install git@github.com:get/Undo.git
+	% gem 'Undo'
 
 Place this line **in the very beginning** of your `rails` file located in the `script` directory (you can change the path to point to wherever the plugin is located):
 
