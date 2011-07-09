@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "Undo"
   gem.homepage = "http://github.com/get/Undo"
   gem.license = "MIT"
-  gem.summary = %Q{hi}
-  gem.description = %Q{hi}
+  gem.summary = %Q{undo/redo generators with a single command}
+  gem.description = %Q{undo/redo generators with a single command}
   gem.email = "korengb@gmail.com"
   gem.authors = ["get"]
   gem.files = Dir.glob('lib/**/*.rb')
