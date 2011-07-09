@@ -1,4 +1,4 @@
-# Undo v.0.1.2
+# Undo v.0.1.4
 
 Undo is a rails plugin that allows you to undo/redo generators with a single command:
 
@@ -22,7 +22,15 @@ Undo gives you the ability to:
 
 Place this line **in the very beginning** of your `rails` file located in the `script` directory (you can change the path to point to wherever the plugin is located):
 
-	require 'vendor/plugins/Undo/lib/log_generators.rb'
+	cmd = "#{ARGV.join(' ')}\n"
+	File.open('log/generate.log', 'a') do |f| 
+		args = cmd.split(" ")
+		if (args[0]=="g" or args[0] == "generate")
+		  if (!args[1].nil? and args[1]!="undo" and args[1]!="redo")
+		    f.puts(cmd)
+		  end
+		end
+	end	
 
 ## Usage
 
