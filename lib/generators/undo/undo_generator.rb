@@ -7,7 +7,7 @@ class UndoGenerator < Rails::Generators::Base
     executed_generator = ""
     executed_action = ""
     
-    File.open(File.join(RAILS_ROOT, 'log/generate.log'), 'r+') do |f| 
+    File.new(File.join(RAILS_ROOT, 'log/generate.log'), 'r+') do |f| 
       zeroes = 0
       f.readlines.reverse.each do |r|
         
